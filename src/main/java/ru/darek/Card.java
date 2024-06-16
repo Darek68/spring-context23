@@ -13,8 +13,8 @@ public class Card {
     private ProductRepository productRepository;
     private List<Product> products;
 
-    public Card() {
-        this.productRepository = new ProductRepository();
+    public Card(ProductRepository productRepository) {
+        this.productRepository = productRepository;
         this.products = new ArrayList<>();
     }
 
