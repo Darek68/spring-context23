@@ -9,8 +9,8 @@ public class Application {
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
-     //   WorkProcessor workProcessor = context.getBean(WorkProcessor.class);
-        WorkProcessor workProcessor = new WorkProcessor(new ProductRepository(),new Card());
+        WorkProcessor workProcessor = context.getBean(WorkProcessor.class);
+     //   WorkProcessor workProcessor = new WorkProcessor(new ProductRepository(),new Card());
 
         workProcessor.startWork();
     }

@@ -1,10 +1,14 @@
 package ru.darek;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
 //@Controller
+@Scope("prototype")
+@Component
 public class Card {
     private ProductRepository productRepository;
     private List<Product> products;
