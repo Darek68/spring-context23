@@ -3,9 +3,6 @@ package ru.darek;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 //@Controller @RestController @Service @Repository
@@ -14,17 +11,17 @@ import java.util.Scanner;
 @Component
 public class WorkProcessor {
     private ProductRepository productRepository;
-    private Card card;
+    private Cart cart;
     @Value("${count}")
     public int count;
 
-    public WorkProcessor(ProductRepository productRepository, Card card) {
+    public WorkProcessor(ProductRepository productRepository, Cart cart) {
         this.productRepository = productRepository;
-        this.card = card;
+        this.cart = cart;
     }
 
-    public Card getCard() {
-        return card;
+    public Cart getCart() {
+        return cart;
     }
 
     public void startWork() {
@@ -34,12 +31,12 @@ public class WorkProcessor {
 
         while (true) {
             System.out.println("ad <№> - добавить продукт в корзину \n rm <№> - удалить продукт из  корзины \n exit");
-            System.out.println("Текущая корзина: \n " + card.toString());
+            System.out.println("Текущая корзина: \n " + cart.toString());
             if (count-- < 0) break;
             String command = scanner.nextLine();
             if (command.startsWith("exit")) break;
-            if (command.startsWith("ad")) card.addToCard(getId(command));
-            if (command.startsWith("rm")) card.removeFromCard(getId(command));
+            if (command.startsWith("ad")) cart.addToCart(getId(command));
+            if (command.startsWith("rm")) cart.removeFromCart(getId(command));
         }
     }
 
